@@ -1,4 +1,11 @@
-<<<<<<< HEAD
+## Bracket Maker
+
+## Developers
+-Will Lyons, [wtlyons54](https://github.com/wtlyons54)
+-Paul Davis, [paultherobert](https://github.com/paultherobert)
+-Devang Raval, [DevangRaval1](https://github.com/DevangRaval1)
+-Cameron Wright, [mrwrightcgw](https://github.com/mrwrightcgw)
+
 ## Get Node.js
 # WSL / Ubuntu / Debian
 
@@ -29,12 +36,3 @@ $ npm run build
 
 - spin up webserv
 $ npm run start 
-=======
-# bracketmaker
-
-## Developers
--Will Lyons, [wtlyons54](https://github.com/wtlyons54)
--Paul Davis, [paultherobert](https://github.com/paultherobert)
--Devang Raval, [DevangRaval1](https://github.com/DevangRaval1)
--Cameron Wright, [mrwrightcgw](https://github.com/mrwrightcgw)
->>>>>>> 69c9a8d4f3f98601d2136b8bd397fc61a4b6f02d
