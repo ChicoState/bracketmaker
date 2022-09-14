@@ -1,0 +1,30 @@
+{
+  "name": "BracketBuilder",
+  "version": "1.0.0",
+  "description": "Lets build some brakety brackets",
+  "main": "index.js",
+  "scripts": {
+    "start": "NODE_OPTIONS=--openssl-legacy-provider; webpack serve",
+    "build": "webpack --config webpack.config.js --mode production"
+  },
+  "author": "Paul Robert Davis",
+  "license": "GNU",
+  "dependencies": {
+    "@babel/core": "^7.11.0",
+    "@babel/preset-env": "^7.11.0",
+    "@babel/preset-react": "^7.10.4",
+    "babel-loader": "^8.1.0",
+    "css-loader": "^4.2.0",
+    "file-loader": "^6.0.0",
+    "html-webpack-plugin": "^4.3.0",
+    "react": "^15.1.1",
+    "react-dom": "^15.1.1",
+    "style-loader": "^1.2.1",
+    "webpack": "^4.44.1",
+    "webpack-cli": "^4.5.0",
+    "webpack-dev-server": "^3.11.0"
+  },
+  "devDependencies": {
+    "@webpack-cli/serve": "^1.5.1"
+  }
+}
