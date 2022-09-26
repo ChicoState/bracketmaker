@@ -1,148 +1,46 @@
 import React from "react"
 
 import Ribbon from "./Ribbon"
+import PlayerList from './players'
 
-class App extends React.Component{
-    constructor(props){
-        super(props);
-        this.state ={
-            drillDown: 'searchYear',
-            data: [], //data
-        }
-        this.handleTeamClick = this.handleTeamClick.bind(this);
-        this.handlePlayerClick = this.handlePlayerClick.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
-    }
+function randomizer(players) {
+  console.log(players)
+  var range = players.length;
+  while (range != 0) {
+    var random = Math.floor(Math.random() * range);
+    range--;
 
-    handleTeamClick(teamID){
-        this.getPlayers(teamID)
-    }
+    [players[range], players[random]] = [players[random], players[range]];
+  }
+  console.log(players)
+  return players;
+}
 
-    handlePlayerClick(playerID){
-        this.getPlayer(playerID);
-    }
+class App extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      list: ['Alice', 'Billy', 'Tommy', 'Gwen', 'Amanda', 'Chris'],
+    };
+    this.handleShuffle = this.handleShuffle.bind(this);
+  }
 
-    handleSubmit(event){
-        this.getTeams();
-        event.preventDefault();
-    }
-    
-    render(){
-        const drillDown= this.state.drillDown;
-        const data = this.state.data;
-        const seasonPitchingData = this.state.seasonPitchingData;
-        let ribbon;
-        let dataDisplay = [];
+  //var players = ['Alice', 'Billy', 'Tommy', 'Gwen', 'Amanda', 'Chris'];
 
-        //ribbon here is a React Component
-        ribbon=
-        <Ribbon
-            //Search bar props
-            onSubmit= {this.handleSubmit}
 
-           // parentDivClassName='form-group'
-            labelFor='MLB Roster Year'            
-            label= 'Bracketmaker'
-            searchBartype='number'
-            searchBarClassName='form-control'
-            searchBarID='RosterYear'
-            //placeholder=
-            defaultValue='...'
+  handleShuffle(e) {
+    this.setState(randomizer(this.state.list));
+  }
 
-            //Submit Button props
-            buttonClassName='btn btn-outline-primary data-bs-toggle="button"'
-            />
 
-        switch(drillDown){
-            //TODO here you need to reference teamCard as a component
-            case 'searchYear':
-                //TODO depricate this later
-                dataDisplay.push(<div></div>)
-
-            break;
-            case 'selectTeam':
-                dataDisplay = data.map((teamData)=>{
-                    //add other parameters from the JSON here!
-                    const{
-                            name_display_full,
-                            mlb_org_brief,
-                            venue_name,
-                            division_abbrev,
-                            mlb_org_id,
-                            address_city,
-                            state
-                        } = teamData;
-                    
-                    return(
-                        //and then here!
-                        <div className='container'>
-                            <TeamCards 
-                                teamName={name_display_full}
-                                name={mlb_org_brief}
-                                venueName={venue_name}
-                                league={division_abbrev}
-                                city = {address_city}
-                                state={state}
-
-                                onClick={() => this.handleTeamClick(mlb_org_id)}
-                                />
-                        </div>
-                    )
-                })
-            break;
-            case 'selectPlayer':      
-                dataDisplay = data.map((playerData)=>{
-                    const{
-                        name_first_last,
-                        throws,
-                        bats,
-                        height_feet,
-                        height_inches,
-                        player_id,
-                        position_desig,
-                        primary_position,
-                        jersey_number
-                    }=playerData;
-                    return(
-                        <PlayerCards
-                            playerName={name_first_last}
-                            bats={bats}S
-                            throws={throws}
-                            height_feet={height_feet}
-                            height_inches={height_inches}
-
-                            posDes={position_desig}
-                            primPos={primary_position}
-                            jerseyNumber={jersey_number}
-                            onClick={() => this.handlePlayerClick(player_id)}
-                        />
-                    )
-                })
-                break;
-                case 'playerStats':    
-                const inches = data['height_in']           
-
-                dataDisplay=                         
-                    <PlayerStats
-                        name= {data['name_display_first_last']}
-                        age={data['age']}
-                        ft={data['height_feet']}
-                        in={inches}
-                        weight={data['weight']}
-                        jerseyNumber={data['jersey_number']}
-                          
-                    />
-                break;
-        }
-
-        return(
-            <div>
-               {ribbon}
-               {dataDisplay}
-            </div>
-           )
-    }
-
+  render() {
+    return (
+      <div>
+        <PlayerList players={this.state.list}/>
+        <button onClick={this.handleShuffle}>Shuffle!</button>
+      </div>
+    );
+  }
 }
 
 export default App
