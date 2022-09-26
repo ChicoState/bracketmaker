@@ -3,7 +3,7 @@
 import React from 'react'
 
 import SubmitButton from "./SubmitButton"
-import SearchBar from "./SearchBar"
+import InputBar from "./InputBar"
 
 class Ribbon extends React.Component{
     constructor(props){
@@ -37,7 +37,7 @@ class Ribbon extends React.Component{
                 </div>
                 <div className='form-row'>
                     <div className='form-group col-10'>
-                    <SearchBar
+                    <InputBar
                         //Ribbon states and props
                         //  value= {this.state.value} //cannot havea value propand a default value prop specified.(ie controlled vs uncontrolled input)
                         onChange= {this.handleChange}
@@ -61,9 +61,7 @@ class Ribbon extends React.Component{
                 </div>
            
                     
-            </div>
-              
-               
+            </div>              
             </form>
         )}
 }

@@ -1,4 +1,6 @@
-import React from 'react'
+import React from "react"
+
+import Ribbon from "./Ribbon"
 import PlayerList from './players'
 
 function randomizer(players) {
