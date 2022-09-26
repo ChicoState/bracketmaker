@@ -7,18 +7,11 @@ class App extends React.Component{
         super(props);
         this.state ={
             drillDown: 'searchYear',
-            data: [], //player data
-            seasonHittingData: [],
-            seasonPitchingData: [],
-            careerHittingData: [],
-            careerPitchingData: [],
-            projHittingData: [],
-            projPitchingData: []
+            data: [], //data
         }
         this.handleTeamClick = this.handleTeamClick.bind(this);
         this.handlePlayerClick = this.handlePlayerClick.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
-        
     }
 
     handleTeamClick(teamID){
@@ -49,13 +42,12 @@ class App extends React.Component{
 
            // parentDivClassName='form-group'
             labelFor='MLB Roster Year'            
-            label= 'Brackemaker'
+            label= 'Bracketmaker'
             searchBartype='number'
             searchBarClassName='form-control'
             searchBarID='RosterYear'
             //placeholder=
             defaultValue='...'
-            
 
             //Submit Button props
             buttonClassName='btn btn-outline-primary data-bs-toggle="button"'
@@ -121,7 +113,7 @@ class App extends React.Component{
 
                             posDes={position_desig}
                             primPos={primary_position}
-S                            jerseyNumber={jersey_number}
+                            jerseyNumber={jersey_number}
                             onClick={() => this.handlePlayerClick(player_id)}
                         />
                     )
@@ -140,7 +132,6 @@ S                            jerseyNumber={jersey_number}
                         jerseyNumber={data['jersey_number']}
                           
                     />
-                        
                 break;
         }
 

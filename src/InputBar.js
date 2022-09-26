@@ -1,8 +1,8 @@
-//SearchBar
+//InputBar
 
 import React from 'react'
 
-function SearchBar(props){
+function InputBar(props){
     return(
 
                 <input 
@@ -21,4 +21,4 @@ function SearchBar(props){
     )
 }
 
-export default SearchBar
+export default InputBar
