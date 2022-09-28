@@ -31,15 +31,12 @@ class Ribbon extends React.Component{
             <form onSubmit={this.props.onSubmit} id='ribbon'>
                 <div className="container">
                 <div className='form-row'>
-                    
-                
                     <label htmlFor={this.props.labelFor}> {this.props.label} </label>
                 </div>
                 <div className='form-row'>
                     <div className='form-group col-10'>
                     <InputBar
                         //Ribbon states and props
-                        //  value= {this.state.value} //cannot havea value propand a default value prop specified.(ie controlled vs uncontrolled input)
                         onChange= {this.handleChange}
                         
                         //calling function props
@@ -48,7 +45,6 @@ class Ribbon extends React.Component{
                         id={this.props.searchBarID}
                         placeholder= {this.props.placeholder}
                         defaultValue={this.props.defaultValue}
-                    
                     />
                     </div>
                     <div className='form-group col-2'>
@@ -56,11 +52,7 @@ class Ribbon extends React.Component{
                         className={this.props.buttonClassName}
                         />
                     </div>
-
-                
                 </div>
-           
-                    
             </div>              
             </form>
         )}
