@@ -50,8 +50,8 @@ function App() {
 
       <h1>Bracket Maker</h1>
       <Routes>
-        <Route path="/" element={<Player />} />,
-        <Route path="/view" element={<View />} />
+        <Route path="/bracketMaker/" element={<Player />} />,
+        <Route path="/bracketMaker/view" element={<View />} />,
       </Routes>
       <PlayerList players={players}/>
       <div className="container mt-5">
