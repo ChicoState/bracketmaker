@@ -1,10 +1,13 @@
 {
+  "homepage": "http://ChicoState.github.io/bracketmaker",
   "name": "BracketBuilder",
   "version": "1.0.0",
   "description": "Lets build some brakety brackets",
   "main": "index.js",
   "scripts": {
     "start": "webpack serve",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "build": "webpack --config webpack.config.js --mode production"
   },
   "author": "Paul Robert Davis",
@@ -24,12 +27,13 @@
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.4.1",
     "style-loader": "^1.2.1",
+    "web-vitals": "^2.1.4",
     "webpack": "^5.74.0",
     "webpack-cli": "^4.7.0",
-    "webpack-dev-server": "^4.11.1",
-    "web-vitals": "^2.1.4"
+    "webpack-dev-server": "^4.11.1"
   },
   "devDependencies": {
-    "@webpack-cli/serve": "^1.5.1"
+    "@webpack-cli/serve": "^1.5.1",
+    "gh-pages": "^4.0.0"
   }
 }
