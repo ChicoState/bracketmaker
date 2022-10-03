@@ -8,7 +8,7 @@
     "start": "webpack serve",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
-    "build": "webpack --config webpack.config.js --mode production"
+    "build": "webpack --config webpack.config.js --mode production && react-scripts build"
   },
   "author": "Paul Robert Davis",
   "license": "GNU",
@@ -26,6 +26,7 @@
     "react-bootstrap": "^2.5.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.4.1",
+    "react-scripts": "^5.0.1",
     "style-loader": "^1.2.1",
     "web-vitals": "^2.1.4",
     "webpack": "^5.74.0",
@@ -35,5 +36,17 @@
   "devDependencies": {
     "@webpack-cli/serve": "^1.5.1",
     "gh-pages": "^4.0.0"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }
