@@ -1,11 +1,14 @@
 {
+  "homepage": "https://ChicoState.github.io/bracketmaker",
   "name": "BracketBuilder",
   "version": "1.0.0",
   "description": "Lets build some brakety brackets",
   "main": "index.js",
   "scripts": {
     "start": "webpack serve",
-    "build": "webpack --config webpack.config.js --mode production"
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
+    "build": "webpack --config webpack.config.js --mode production && react-scripts build"
   },
   "author": "Paul Robert Davis",
   "license": "GNU",
@@ -14,17 +17,36 @@
     "@babel/preset-env": "^7.11.0",
     "@babel/preset-react": "^7.10.4",
     "babel-loader": "^8.1.0",
+    "bootstrap": "^5.2.1",
     "css-loader": "^4.2.0",
     "file-loader": "^6.0.0",
+    "firebase": "^9.10.0",
     "html-webpack-plugin": "^4.3.0",
     "react": "^18.2.0",
+    "react-bootstrap": "^2.5.0",
     "react-dom": "^18.2.0",
+    "react-router-dom": "^6.4.1",
+    "react-scripts": "^5.0.1",
     "style-loader": "^1.2.1",
+    "web-vitals": "^2.1.4",
     "webpack": "^5.74.0",
     "webpack-cli": "^4.7.0",
     "webpack-dev-server": "^4.11.1"
   },
   "devDependencies": {
-    "@webpack-cli/serve": "^1.5.1"
+    "@webpack-cli/serve": "^1.5.1",
+    "gh-pages": "^4.0.0"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }
