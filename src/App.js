@@ -1,66 +1,28 @@
-import { Routes, Route } from "react-router-dom";
-import { useEffect, useState } from "react";
-import Button from "react-bootstrap/Button";
-import View from "./view";
-import React from "react";
-import Player from "./add";
-import PlayerList from "./players";
-import Match from "./match";
-import { firestore } from "./firebase";
 import { collection, getDocs } from "firebase/firestore";
-
+import  React, { useEffect, useState } from "react";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
+import Button from "react-bootstrap/Button";
+import { firestore } from "./firebase";
+import MyNav from "./components/Navbar"
+import Player from "./addPlayers"
+import Match from "./match";
+import NewTournament from "./newTournament";
+import View from "./view";
+import Home from "./home"
 import "./App.css";
-import { Navbar } from "react-bootstrap";
-
-
 
 function App() {
-  const [players, updatePlayers] = useState([]);
-  const [matches, updateMatches] = useState([]);
-  const playerCollectionRef = collection(firestore, "Event");
-
-  useEffect(() => {
-    const getPlayers = async () => {
-      const data = await getDocs(playerCollectionRef);
-      updatePlayers(data.docs.map((doc) => ({...doc.data(), id: doc.id})))
-      console.log(data);
-    };
-
-    getPlayers();
-  }, []);
-
-  function randomizer(players, matches) {
-    const names = []
-    for (let i=0; i < players.length; i++) {
-      names.push(players[i].name)
-    }
-    console.log(names);
-    var range = names.length;
-    while (range != 0) {
-      var random = Math.floor(Math.random() * range);
-      range--;
-      [names[range], names[random]] = [names[random], names[range]];
-    }
-    updateMatches(names)
-  };
-
   return (
-    <div>
-
-      <h1>Bracket Maker</h1>
-      <Routes>
-        <Route path="/bracketMaker/" element={<Player />} />,
-        <Route path="/bracketMaker/view" element={<View />} />,
-      </Routes>
-      <PlayerList players={players}/>
-      <div className="container mt-5">
-        <Button onClick={() => randomizer(players, matches) }>Generate Matches!</Button>
-        <p></p>
-        <Match match={matches}/>
-        <p></p>
+      <div>
+        <MyNav/>
+        <Routes>
+          <Route exact path="/bracketmaker/" element={ <Home/> } />
+          <Route exact path="/bracketmaker/create-tournament" element={ <NewTournament/> } />
+          <Route exact path="/bracketmaker/create-tournament/players" element={ <Player/> } />
+          <Route exact path="/bracketmaker/view" element={ <View/>} />
+        </Routes>
       </div>
-    </div>
   );
 }
 
