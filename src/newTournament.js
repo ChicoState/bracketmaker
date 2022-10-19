@@ -17,8 +17,6 @@ const NewTournament = props => {
   const [manager, setManager] = useState("");
   const [numTeams, setNumTeams] = useState("");
   const [playersPerTeam, setPlayersPerTeam] = useState("");
-  const tournamentCollectionRef = collection(firestore, "Tournaments");
-
   const handleSubmit = async (t) => {
     t.preventDefault();
     await firebase.addTournament(name, type, manager, numTeams, playersPerTeam)
@@ -30,7 +28,7 @@ const NewTournament = props => {
 
   return (
     <div className="container mt-5">
-      <Navbar bg="light" expand="lg">
+
       <Container>
         <Navbar.Brand>Create New Tournament</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -38,13 +36,12 @@ const NewTournament = props => {
         </Navbar.Collapse>
       </Container>
 
-      </Navbar>
       <Form onSubmit={handleSubmit}>
         <Form.Group className="mb-3" controlId="formBasicText">
           <Form.Label>Name</Form.Label>
           <Form.Control
             onChange={(t) => setName(t.target.value)}
-            value={name}
+            defaultValue={name}
             type="text"
             placeholder="Grand Champions 2022"
           />
@@ -55,7 +52,7 @@ const NewTournament = props => {
           <Form.Control
             as="select"
             onChange={(t) => setType(t.target.value)}
-            value={type}
+            defaultValue={type}
           >
           <option>---</option>
           <option value="Single Elimination">Single Elimination</option>
@@ -67,7 +64,7 @@ const NewTournament = props => {
           <Form.Label>Manager</Form.Label>
           <Form.Control
             onChange={(t) => setManager(t.target.value)}
-            value={manager}
+            defaultValue={manager}
             type="text"
             placeholder="John Doe"
           />
@@ -77,7 +74,7 @@ const NewTournament = props => {
           <Form.Label>Number of Teams</Form.Label>
           <Form.Control
             onChange={(t) => setNumTeams(t.target.value)}
-            value={numTeams}
+            defaultValue={numTeams}
             type="number"
             placeholder="4"
           />
@@ -87,7 +84,7 @@ const NewTournament = props => {
           <Form.Label>Number of Players on Each Team</Form.Label>
           <Form.Control
             onChange={(t) => setPlayersPerTeam(t.target.value)}
-            value={playersPerTeam}
+            defaultValue={playersPerTeam}
             type="number"
             placeholder="8"
           />

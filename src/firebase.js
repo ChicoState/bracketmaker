@@ -33,13 +33,12 @@ export const firestore = getFirestore(firebaseApp);
 
 export const FirebaseProvider = (props) => {
 
-  const addPlayer = async (name, age, team) => {
+  const addPlayer = async (name, team, tournament) => {
 
-    return await addDoc(collection(firestore, "Event"), {
+    return await addDoc(collection(firestore, "Players"), {
       name,
-      age,
       team,
-
+      tournament,
     });
   };
 
@@ -54,17 +53,12 @@ export const FirebaseProvider = (props) => {
     });
   };
 
-  const listPlayers = () => {
-    return getDocs(collection(firestore, "Event"));
-  };
-
 
 
   return (
     <FirebaseContext.Provider
       value={{
         addPlayer,
-        listPlayers,
         addTournament,
       }}
     >
