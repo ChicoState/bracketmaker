@@ -1,9 +1,7 @@
-<<<<<<< HEAD
 ## Bracket Maker
 
 ## Developers
 -Will Lyons, [wtlyons54](https://github.com/wtlyons54)
--Paul Davis, [paultherobert](https://github.com/paultherobert)
 -Devang Raval, [DevangRaval1](https://github.com/DevangRaval1)
 -Cameron Wright, [mrwrightcgw](https://github.com/mrwrightcgw)
 
@@ -26,10 +24,12 @@ $ $HOME/.nvm"
 
 - Use NVM to install node.js
 ```
-$ nvm insatall node 16
+$ nvm install node 16
 ```
-
+- if this is running locally, remove the "&& react-scripts build" portion from build in scripts and "react-scripts": "^5.0.1" from dependencies in the package.json file.
+- if this is running locally, remove the "/bracketmaker" portion in each route in App.js.
 - download all the packages in package.json
+
 ```
 $ npm install
 ```
