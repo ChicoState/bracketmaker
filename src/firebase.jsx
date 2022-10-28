@@ -11,6 +11,15 @@ import {
   query,
   where,
 } from "firebase/firestore";
+import {
+  GoogleAuthProvider,
+  getAuth,
+  signInWithPopup,
+  signInWithEmailAndPassword,
+  createUserWithEmailAndPassword,
+  sendPasswordResetEmail,
+  signOut,
+ } from "firebase/auth";
 
 const FirebaseContext = createContext(null);
 
@@ -31,6 +40,7 @@ const firebaseApp = initializeApp(firebaseConfig);
 
 export const firestore = getFirestore(firebaseApp);
 
+export const fireauth = getAuth(firebaseApp);
 
 export const FirebaseProvider = (props) => {
 
