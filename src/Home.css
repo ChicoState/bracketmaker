@@ -1,0 +1,30 @@
+.h1{
+    text-align: center;
+}
+
+.HomeStyle{
+    background-color: cornflowerblue;
+    background-size: "cover";
+    height: 110vh;
+    margin-top: -70px;
+    background-repeat: no-repeat;
+}
+
+.mid-button-style {
+    height: 750px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 25px;
+}
+
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    color: #ffffff;
+    background-color: midnightblue;
+    border-radius: 6px;
+    outline: none;
+  }
