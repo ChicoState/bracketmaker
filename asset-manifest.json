@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/bracketmaker/static/css/main.d2d10aa0.css",
-    "main.js": "/bracketmaker/static/js/main.598a306e.js",
+    "main.js": "/bracketmaker/static/js/main.ca5d8286.js",
     "static/js/787.464c6209.chunk.js": "/bracketmaker/static/js/787.464c6209.chunk.js",
     "index.html": "/bracketmaker/index.html",
     "main.d2d10aa0.css.map": "/bracketmaker/static/css/main.d2d10aa0.css.map",
-    "main.598a306e.js.map": "/bracketmaker/static/js/main.598a306e.js.map",
+    "main.ca5d8286.js.map": "/bracketmaker/static/js/main.ca5d8286.js.map",
     "787.464c6209.chunk.js.map": "/bracketmaker/static/js/787.464c6209.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.d2d10aa0.css",
-    "static/js/main.598a306e.js"
+    "static/js/main.ca5d8286.js"
   ]
 }
