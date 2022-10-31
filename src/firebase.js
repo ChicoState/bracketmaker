@@ -35,10 +35,8 @@ export const FirebaseProvider = (props) => {
 
   const addPlayer = async (name, team, tournament) => {
 
-    return await addDoc(collection(firestore, "Players"), {
+    return await addDoc(collection(firestore, "Tournaments", tournament, "Teams", team, "Players"), {
       name,
-      team,
-      tournament,
     });
   };
 
@@ -53,13 +51,20 @@ export const FirebaseProvider = (props) => {
     });
   };
 
+  const addTeam = async (name, numPlayers, tournament) => {
 
+    return await addDoc(collection(firestore, "Tournaments", tournament, "Teams"), {
+      name,
+      numPlayers,
+    });
+  };
 
   return (
     <FirebaseContext.Provider
       value={{
         addPlayer,
         addTournament,
+        addTeam,
       }}
     >
       {props.children}

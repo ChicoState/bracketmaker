@@ -1,33 +1,55 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import CardGroup from "react-bootstrap/CardGroup";
+import Match from "./match"
+import "./view.css"
 import { useFirebase, firestore } from "./firebase";
 import { collection, getDocs, onSnapshot, query, where } from "firebase/firestore";
 
 function View() {
-  const [playerList, setPlayerList] = useState([])
+  const [teamList, setTeamList] = useState([])
   const { state } = useLocation();
   const { id } = state;
+  const { numTeams } = state;
 
-  async function whatever() {
-    const profile = [];
-    const q = query(collection(firestore, "Players"), where("tournament", "==", id));
-    const querySnapshot = await getDocs(q);
+  async function firebase_query() {
+    const allTeams = [];
+    const querySnapshot = await getDocs(collection(firestore, "Tournaments", id, "Teams"));
     querySnapshot.forEach((doc) => {
-      profile.push(doc.get("name"));
+      allTeams.push(doc.get("name"));
     });
-    setPlayerList(profile);
-    console.log(profile)
+    setTeamList(allTeams);
   };
 
   useEffect(()=> {
-    whatever()
+    firebase_query()
   }, []);
-
   return (
     <div>
-    Filtering Players
-      {playerList.map(x => <div key={x}> {x} </div>)}
+      <div className="round r-of-4">
+        <div className="bracket-game">
+        {teamList.map(y =>
+          <div>
+            <div className="player top">
+              {y}
+              <div className="score">
+                0
+              </div>
+            </div>
+          </div>
+          )}
+        </div>
+      </div>
+      <div className="connectors r-of-2">
+        <div className="top-line"></div>
+        <div className="clear"></div>
+        <div className="bottom-line"></div>
+        <div className="clear"></div>
+        <div className="vert-line"></div>
+        <div className="clear"></div>
+        <div className="next-line"></div>
+        <div className="clear"></div>
+      </div>
     </div>
   )
 }

@@ -56,7 +56,8 @@ const NewTournament = props => {
           >
           <option>---</option>
           <option value="Single Elimination">Single Elimination</option>
-          <option value="Double Elimination">Double Elimination</option>
+
+          {/*<option value="Double Elimination">Double Elimination</option>*/}
           </Form.Control>
         </Form.Group>
 

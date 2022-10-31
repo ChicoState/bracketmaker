@@ -15,7 +15,6 @@ function MyNav() {
             <Nav className="me-auto">
               <Nav.Link href="/create-tournament">New Tournament</Nav.Link>
               <Nav.Link href="/login">Login</Nav.Link>
-              <Nav.Link href="/view">View</Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Container>

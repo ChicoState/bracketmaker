@@ -9,8 +9,6 @@ import { firestore } from "./firebase";
 import { useFirebase } from "../src/firebase";
 import { doc, collection, getDocs, onSnapshot, query, where } from "firebase/firestore";
 
-
-
 function Player() {
   const firebase = useFirebase();
   const navigate = useNavigate();
@@ -18,6 +16,7 @@ function Player() {
   const { id } = state;
   const { numTeams } = state;
   const { playersPerTeam } = state;
+  var teamID
   var teamRows = []
   var playerRows = []
   var allPlayers = []
@@ -33,11 +32,12 @@ function Player() {
   const handleSubmit = async (p) => {
     event.preventDefault()
     for(var i=0; i<numTeams; i++) {
-      //console.log(p.target.team[i].value)
+      await firebase.addTeam(p.target.team[i].value, playersPerTeam, id)
+      .then(docRef => {
+        teamID = docRef.id;
+      })
       for(var j=0; j<playersPerTeam; j++) {
-        //allPlayers.push(p.target[i].value)
-        //console.log(p.target.player[i*playersPerTeam+j].value)
-        await firebase.addPlayer(p.target.player[i*playersPerTeam+j].value, p.target.team[i].value, id)
+        await firebase.addPlayer(p.target.player[i*playersPerTeam+j].value, teamID, id)
 
       }
     }
