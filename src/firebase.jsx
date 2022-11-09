@@ -19,6 +19,7 @@ import {
   createUserWithEmailAndPassword,
   sendPasswordResetEmail,
   signOut,
+  initializeAuth,
  } from "firebase/auth";
 
 const FirebaseContext = createContext(null);
@@ -37,6 +38,7 @@ const firebaseConfig = {
 export const useFirebase = () => useContext(FirebaseContext);
 
 const firebaseApp = initializeApp(firebaseConfig);
+// const auth = initializeAuth(firebaseApp);
 
 export const firestore = getFirestore(firebaseApp);
 

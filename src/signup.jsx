@@ -5,10 +5,12 @@ import Form from "react-bootstrap/Form";
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import { firestore } from "./firebase";
-import { useFirebase } from "../src/firebase";
-import FormCheck from 'react-bootstrap/FormCheck'
-
+import { firestore, fireauth } from "./firebase";
+import { useFirebase} from "../src/firebase";
+import FormCheck from 'react-bootstrap/FormCheck';
+import { createUserWithEmailAndPassword} from 'firebase/auth';
+// import { fireauth } from "./firebase.jsx";
+// import { fireauth } from "./firebase";
 
 
 const SignUp = () => {
@@ -27,9 +29,11 @@ const SignUp = () => {
     const playerCollectionRef = collection(firestore, "User");
 
     const handleSubmit = async (e) => {
-        e.preventDefault();
-        await firebase.addUser(name, uname, email, pass, isNoti, isViewer, isPlayer, isManager);
-        window.location.reload(false);
+        //// dddddddddddddddddddddddddddd
+        // e.preventDefault();
+        // await firebase.addUser(name, uname, email    , pass, isNoti, isViewer, isPlayer, isManager);
+        // window.location.reload(false);
+       
     };
     const handleChangeV = async (e) => {
         setViewer(!isViewer);
@@ -43,7 +47,14 @@ const SignUp = () => {
     const handleNoti = async (e) => {
         setNoti(!isNoti);
     };
-    
+    const signUp = async () =>{
+        createUserWithEmailAndPassword(fireauth, email, pass)
+            .then(fireauth=>console.log(fireauth))
+                .catch(error=>console.error(error))
+                // e.preventDefault();
+                await firebase.addUser(name, uname, email, pass);
+                window.location.reload(false);
+    }    
 
     return (
         // <div className="container mt-5">
@@ -54,8 +65,13 @@ const SignUp = () => {
         <Container>
             <h1 align="center">SignUp</h1>
         </Container>
-  
-        <Form onSubmit={handleSubmit}>
+        <p>  </p>
+        <p></p>
+
+        
+
+
+        {/* <Form>
             <Form.Group className="mb-3" controlId="formBasicText">
                 <Form.Label>Name</Form.Label>
                 <Form.Control
@@ -102,12 +118,32 @@ const SignUp = () => {
                 
                 <Form.Check type="switch" id="Notified" label="Want to be notified?" onChange={handleNoti}/>
             </Form.Group>
-            <Button variant="primary" type="submit" align="center">
+            <Button variant="primary" type="submit" align="center" onClick={signUp}>
                 SignUp
             </Button>
           
           
-        </Form>
+        </Form> */}
+
+        <div className="div" align="center">
+            <label className="Form">User Name: &nbsp;</label>
+            <input onChange={(e)=>setUname(e.target.value)} className="input" type="text" name="Uname" />
+            <p>            </p>
+            <label className="Form">Full Name: &nbsp;</label>
+            <input onChange={(e)=>setName(e.target.value)} className="input" type="text" name="name" />
+            <p>            </p>
+
+            <label className="Form">Email: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </label>
+            <input onChange={(e)=>setEmail(e.target.value)} className="input" type="email" name="email" />
+            <p>            </p>
+
+            <label className="Form">Password: &nbsp;&nbsp;</label>
+            <input onChange={(e)=>setPass(e.target.value)} className="input" type="password" name="email" />            <p>            </p>
+            <button className="submit" onClick={signUp}>SignUp</button>
+            <p>            </p>
+            <h6> Alreagy a User <a href="/login">Login In</a></h6>
+        </div>
+
           <p></p>
         <h6> Alreagy a User <a href="/login">Login In</a></h6>
       </div>

@@ -73,10 +73,12 @@ import Form from "react-bootstrap/Form";
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import { firestore } from "./firebase";
+import { firestore, fireauth } from "./firebase";
 import { useFirebase } from "../src/firebase";
 import FormCheck from 'react-bootstrap/FormCheck'
-import auth from firebaseauth
+import {signInWithEmailAndPassword} from 'firebase/auth';
+
+// import auth from firebaseauth
 
 
 const Login = () => {
@@ -90,15 +92,24 @@ const Login = () => {
         e.preventDefault();
         await firebase.addUser(name, email, pass, isNoti, isViewer, isPlayer, isManager);
         window.location.reload(false);
-    };   
+        // navigate('/create-tournament/', { state: {}})
+    };  
+    
+    const log = () =>{
+        signInWithEmailAndPassword(fireauth, email, pass)
+            .then(fireauth=>console.log(fireauth))
+                .catch(error=>console.error(error))
+        
+    } 
 
     return (
         // <div className="container mt-5">
         //   This will be the SignUp page.
         // </div>
         <div className="container mt-5">
-        
-        <Container>
+        <h1>Log In</h1>
+        <p></p>
+        {/* <Container>
             <h1 align="center">Login</h1>
         </Container>
   
@@ -125,14 +136,27 @@ const Login = () => {
                 />
                 
             </Form.Group>
-            <Button variant="primary" type="submit" align="center">
-                Login
-            </Button>
+            <a class="button" href="/bracketmaker/create-tournament"> Login</a>
           
           
-        </Form>
+        </Form> */}
           <p></p>
-        <h6> Alreagy a User <a href="/signup">Sign Up</a></h6>
+          <div className="div" align="center">
+            <Container>
+            <label className="Form">Email: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </label>
+            <input onChange={(e)=>setEmail(e.target.value)} className="input" type="email" name="email" />
+            </Container>
+            <p>            </p>
+            <Container>
+            <label className="Form">Password: &nbsp;&nbsp;</label>
+            <input onChange={(e)=>setPass(e.target.value)} className="input" type="password" name="email" />            <p>            </p>
+            </Container>
+            <Container>
+            <button className="submit" onClick={log}>Login</button>
+            </Container>
+            <p>            </p>
+            <h6> Already a User <a href="/signup">Sign Up</a></h6>
+        </div>
       </div>
     );
 }
