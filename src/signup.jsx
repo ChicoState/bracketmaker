@@ -145,7 +145,6 @@ const SignUp = () => {
         </div>
 
           <p></p>
-        <h6> Alreagy a User <a href="/login">Login In</a></h6>
       </div>
     );
 }
