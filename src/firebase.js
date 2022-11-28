@@ -45,13 +45,12 @@ export const fireauth = getAuth(firebaseApp);
 
 export const FirebaseProvider = (props) => {
 
-  const addPlayer = async (name, age, team) => {
+  const addPlayer = async (name, team, tournament) => {
 
-    return await addDoc(collection(firestore, "Event"), {
+    return await addDoc(collection(firestore, "Players"), {
       name,
-      age,
       team,
-
+      tournament,
     });
   };
 
@@ -80,11 +79,11 @@ export const FirebaseProvider = (props) => {
   };
 
 
+
   return (
     <FirebaseContext.Provider
       value={{
         addPlayer,
-        listPlayers,
         addTournament,
         addUser,
       }}
