@@ -19,6 +19,9 @@ function MyNav() {
               <Nav.Item>
                 <Nav.Link href="/view">View</Nav.Link>
               </Nav.Item>
+              <Nav.Item>
+                <Nav.Link href="/profile">Profile</Nav.Link>
+              </Nav.Item>
             </Nav>
             <Nav className="me-auto">
             </Nav>

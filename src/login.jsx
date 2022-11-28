@@ -99,7 +99,6 @@ const Login = () => {
         signInWithEmailAndPassword(fireauth, email, pass)
             .then(fireauth=>console.log(fireauth))
                 .catch(error=>console.error(error))
-        
     } 
 
     return (

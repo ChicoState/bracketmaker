@@ -12,7 +12,7 @@ import View from "./view";
 import Home from "./home"
 import Login from "./login"
 import SignUp from "./signup"
-
+import Profile from "./Profile"
 
 import "./App.css";
 
@@ -25,8 +25,10 @@ function App() {
           <Route exact path="/create-tournament" element={ <NewTournament/> } />
           <Route exact path="/create-tournament/players" element={ <Player/> } />
           <Route exact path="/view" element={ <View/>} />
+          <Route exact path="/profile" element={ <Profile/>} />
           <Route exact path="/login" element={ <Login/> } />
           <Route exact path="/signup" element={<SignUp/>} />
+          {/* render = {()} */}
         </Routes>
       </div>
   );

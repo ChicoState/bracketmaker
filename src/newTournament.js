@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 import { firestore } from "./firebase";
 import { useFirebase } from "../src/firebase";
 
+
 const NewTournament = props => {
   const firebase = useFirebase();
   const navigate = useNavigate();

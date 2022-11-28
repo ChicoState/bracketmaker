@@ -10,6 +10,7 @@ import {
   doc,
   query,
   where,
+  setDoc,
 } from "firebase/firestore";
 import {
   GoogleAuthProvider,
@@ -69,7 +70,7 @@ export const FirebaseProvider = (props) => {
     return getDocs(collection(firestore, "Event"));
   };
   const addUser = async (name, uName, Email, Password) => {
-    return await addDoc(collection(firestore, "User"), {
+    return await setDoc(doc(firestore, "User", Email), {
       name,
       uName,
       Email,
