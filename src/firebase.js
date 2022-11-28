@@ -10,7 +10,18 @@ import {
   doc,
   query,
   where,
+  setDoc,
 } from "firebase/firestore";
+import {
+  GoogleAuthProvider,
+  getAuth,
+  signInWithPopup,
+  signInWithEmailAndPassword,
+  createUserWithEmailAndPassword,
+  sendPasswordResetEmail,
+  signOut,
+  initializeAuth,
+ } from "firebase/auth";
 
 const FirebaseContext = createContext(null);
 
@@ -30,6 +41,7 @@ const firebaseApp = initializeApp(firebaseConfig);
 
 export const firestore = getFirestore(firebaseApp);
 
+export const fireauth = getAuth(firebaseApp);
 
 export const FirebaseProvider = (props) => {
 
@@ -53,6 +65,19 @@ export const FirebaseProvider = (props) => {
     });
   };
 
+  const listPlayers = () => {
+    return getDocs(collection(firestore, "Event"));
+  };
+  const addUser = async (name, uName, Email, Password) => {
+    return await setDoc(doc(firestore, "User", Email), {
+      name,
+      uName,
+      Email,
+      Password,
+
+    });
+  };
+
 
 
   return (
@@ -60,6 +85,7 @@ export const FirebaseProvider = (props) => {
       value={{
         addPlayer,
         addTournament,
+        addUser,
       }}
     >
       {props.children}

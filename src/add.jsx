@@ -25,7 +25,7 @@ const Player = () => {
   const handleDelete = async () => {
     await deleteDoc(doc(firestore, "Event", name));
     window.location.reload(false);
-};
+  };
 
   return (
     <div className="container mt-5">
