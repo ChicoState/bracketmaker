@@ -10,7 +10,18 @@ import {
   doc,
   query,
   where,
+  setDoc,
 } from "firebase/firestore";
+import {
+  GoogleAuthProvider,
+  getAuth,
+  signInWithPopup,
+  signInWithEmailAndPassword,
+  createUserWithEmailAndPassword,
+  sendPasswordResetEmail,
+  signOut,
+  initializeAuth,
+ } from "firebase/auth";
 
 import {
   GoogleAuthProvider,
@@ -54,9 +65,23 @@ export const FirebaseProvider = (props) => {
     });
   };
 
+
   const addTeam = async (name, tournament) => {
     return await addDoc(collection(firestore, "Tournaments", tournament, "Teams"), {
       name,
+    });
+  };
+
+  const listPlayers = () => {
+    return getDocs(collection(firestore, "Event"));
+  };
+  const addUser = async (name, uName, Email, Password) => {
+    return await setDoc(doc(firestore, "User", Email), {
+      name,
+      uName,
+      Email,
+      Password,
+
     });
   };
 
@@ -90,10 +115,12 @@ export const FirebaseProvider = (props) => {
     <FirebaseContext.Provider
       value={{
         addTournament,
+
         addTeam,
         addUser,
         addRound,
         addMatch,
+        addUser,
       }}
     >
       {props.children}
