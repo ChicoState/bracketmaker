@@ -10,6 +10,8 @@ import Match from "./match";
 import NewTournament from "./newTournament";
 import View from "./view";
 import Home from "./home"
+import Login from "./login"
+import SignUp from "./signup"
 import "./App.css";
 
 function App() {
@@ -17,10 +19,12 @@ function App() {
       <div>
         <MyNav/>
         <Routes>
-          <Route exact path="/bracketmaker/" element={ <Home/> } />
-          <Route exact path="/bracketmaker/create-tournament" element={ <NewTournament/> } />
-          <Route exact path="/bracketmaker/create-tournament/players" element={ <Player/> } />
-          <Route exact path="/bracketmaker/view" element={ <View/>} />
+          <Route exact path="/" element={ <Home/> } />
+          <Route exact path="/create-tournament" element={ <NewTournament/> } />
+          <Route exact path="/create-tournament/players" element={ <Player/> } />
+          <Route exact path="/view" element={ <View/>} />
+          <Route exact path="/login" element={ <Login/> } />
+          <Route exact path="/signup" element={<SignUp/>} />
         </Routes>
       </div>
   );

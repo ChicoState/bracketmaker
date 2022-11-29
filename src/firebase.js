@@ -12,6 +12,17 @@ import {
   where,
 } from "firebase/firestore";
 
+import {
+  GoogleAuthProvider,
+  getAuth,
+  signInWithPopup,
+  signInWithEmailAndPassword,
+  createUserWithEmailAndPassword,
+  sendPasswordResetEmail,
+  signOut,
+  initializeAuth,
+ } from "firebase/auth";
+
 const FirebaseContext = createContext(null);
 
 const firebaseConfig = {
@@ -30,41 +41,59 @@ const firebaseApp = initializeApp(firebaseConfig);
 
 export const firestore = getFirestore(firebaseApp);
 
+export const fireauth = getAuth(firebaseApp);
 
 export const FirebaseProvider = (props) => {
 
-  const addPlayer = async (name, team, tournament) => {
-
-    return await addDoc(collection(firestore, "Tournaments", tournament, "Teams", team, "Players"), {
-      name,
-    });
-  };
-
-  const addTournament = async (name, type, manager, numTeams, playersPerTeam) => {
-
+  const addTournament = async (name, type, manager, numTeams) => {
     return await addDoc(collection(firestore, "Tournaments"), {
       name,
       type,
       manager,
       numTeams,
-      playersPerTeam,
     });
   };
 
-  const addTeam = async (name, numPlayers, tournament) => {
-
+  const addTeam = async (name, tournament) => {
     return await addDoc(collection(firestore, "Tournaments", tournament, "Teams"), {
       name,
-      numPlayers,
+    });
+  };
+
+  const addRound = async (tournament, roundNumber) => {
+    return await addDoc(collection(firestore, "Tournaments", tournament, "Rounds"), {
+      roundNumber,
+    });
+  };
+
+  const addMatch = async (tournament, round, first, second, firstState, secondState, matchNumber) => {
+
+    return await addDoc(collection(firestore, "Tournaments", tournament, "Rounds", round, "Matches"), {
+      first,
+      second,
+      firstState,
+      secondState,
+      matchNumber,
+    });
+  };
+
+  const addUser = async (name, uName, Email, Password) => {
+    return await addDoc(collection(firestore, "User"), {
+      name,
+      uName,
+      Email,
+      Password,
     });
   };
 
   return (
     <FirebaseContext.Provider
       value={{
-        addPlayer,
         addTournament,
         addTeam,
+        addUser,
+        addRound,
+        addMatch,
       }}
     >
       {props.children}

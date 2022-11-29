@@ -1,15 +1,9 @@
-.round {
-  float: left;
-}
-.round.r-of-4 {
-
-}
-.round.r-of-2 {
-  margin-top: 25px;
-}
 .bracket-game {
   max-width: 125px;
-  margin: 10px 0;
+  max-height: 30px;
+}
+.bracket-game.top {
+  margin-top: 14px; 
 }
 .player {
   min-width: 100px;
@@ -35,37 +29,4 @@
 }
 .player.loss {
   background-color: #F2B8B8;
-}
-.connectors {
-  float: left;
-  min-width: 35px;
-}
-.connectors.r-of-2 .top-line {
-  position: relative;
-  top: 30px;
-  width: 17px;
-  border: 1px solid #AAA;
-}
-.connectors.r-of-2 .bottom-line {
-  position: relative;
-  top: 81px;
-  width: 17px;
-  border: 1px solid #AAA;
-}
-.connectors.r-of-2 .vert-line {
-  position: relative;
-  top: 26px;
-  left: -16px;
-  height: 55px;
-  border-right: 2px solid #AAA;
-}
-.connectors.r-of-2 .next-line {
-  position: relative;
-  top: -4px;
-  left: 17px;
-  width: 17px;
-  border: 1px solid #AAA;
-}
-.clear {
-  clear: both;
 }
