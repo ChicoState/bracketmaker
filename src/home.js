@@ -6,8 +6,10 @@ import { Link, resolvePath, Route } from 'react-router-dom';
 const Home = () => {
   return (
     <div className="HomeStyle">
-      <p class="mid-button-style">
-        <a class="button" href="/create-tournament"> Start New Bracket</a>
+
+      <p className="mid-button-style">
+        <a className="button" href="/create-tournament"> Start New Bracket</a>
+
       </p>
     </div>
 

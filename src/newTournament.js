@@ -17,19 +17,17 @@ const NewTournament = props => {
   const [type, setType] = useState("");
   const [manager, setManager] = useState("");
   const [numTeams, setNumTeams] = useState("");
-  const [playersPerTeam, setPlayersPerTeam] = useState("");
   const handleSubmit = async (t) => {
     t.preventDefault();
-    await firebase.addTournament(name, type, manager, numTeams, playersPerTeam)
+    await firebase.addTournament(name, type, manager, numTeams)
     .then(docRef => {
       const id = docRef.id;
-      navigate('/create-tournament/players', { state: { id: id, numTeams: numTeams, playersPerTeam: playersPerTeam}})
+      navigate('/create-tournament/players', { state: { id: id, numTeams: numTeams}})
     })
   };
 
   return (
     <div className="container mt-5">
-
       <Container>
         <Navbar.Brand>Create New Tournament</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -57,7 +55,8 @@ const NewTournament = props => {
           >
           <option>---</option>
           <option value="Single Elimination">Single Elimination</option>
-          <option value="Double Elimination">Double Elimination</option>
+
+          {/*<option value="Double Elimination">Double Elimination</option>*/}
           </Form.Control>
         </Form.Group>
 
@@ -72,22 +71,12 @@ const NewTournament = props => {
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formBasicText">
-          <Form.Label>Number of Teams</Form.Label>
+          <Form.Label>Number of Teams/Players</Form.Label>
           <Form.Control
             onChange={(t) => setNumTeams(t.target.value)}
             defaultValue={numTeams}
             type="number"
             placeholder="4"
-          />
-        </Form.Group>
-
-        <Form.Group className="mb-3" controlId="formBasicText">
-          <Form.Label>Number of Players on Each Team</Form.Label>
-          <Form.Control
-            onChange={(t) => setPlayersPerTeam(t.target.value)}
-            defaultValue={playersPerTeam}
-            type="number"
-            placeholder="8"
           />
         </Form.Group>
         <Button variant="primary" type="submit">

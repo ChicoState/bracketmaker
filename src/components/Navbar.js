@@ -27,7 +27,9 @@ function MyNav() {
             </Nav>
             <Nav>
               <Nav.Link href="/login">Login</Nav.Link>
+
               <Nav.Link href="/signup">SignUp</Nav.Link>
+
             </Nav>
           </Navbar.Collapse>
         </Container>

@@ -1,0 +1,32 @@
+.bracket-game {
+  max-width: 125px;
+  max-height: 30px;
+}
+.bracket-game.top {
+  margin-top: 14px; 
+}
+.player {
+  min-width: 100px;
+  border: 1px solid #AAA;
+  padding-left: 10px;
+}
+.player.top {
+  border-radius: 3px 3px 0 0;
+}
+.player.bot {
+  border-radius: 0 0 3px 3px;
+}
+.player .score {
+  display: inline;
+  float: right;
+  border-left: 1px solid #AAA;
+  padding-left: 10px;
+  padding-right: 10px;
+  background: #EEE;
+}
+.player.win {
+  background-color: #B8F2B8;
+}
+.player.loss {
+  background-color: #F2B8B8;
+}
