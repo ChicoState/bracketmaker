@@ -23,17 +23,6 @@ import {
   initializeAuth,
  } from "firebase/auth";
 
-import {
-  GoogleAuthProvider,
-  getAuth,
-  signInWithPopup,
-  signInWithEmailAndPassword,
-  createUserWithEmailAndPassword,
-  sendPasswordResetEmail,
-  signOut,
-  initializeAuth,
- } from "firebase/auth";
-
 const FirebaseContext = createContext(null);
 
 const firebaseConfig = {
@@ -99,15 +88,6 @@ export const FirebaseProvider = (props) => {
       firstState,
       secondState,
       matchNumber,
-    });
-  };
-
-  const addUser = async (name, uName, Email, Password) => {
-    return await addDoc(collection(firestore, "User"), {
-      name,
-      uName,
-      Email,
-      Password,
     });
   };
 
