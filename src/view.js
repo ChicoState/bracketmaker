@@ -347,35 +347,19 @@ console.log("Probobaly rendering")
                     </div>
                   )
                 } else {
-                  if ((yindex+1)%4==0) {
-                    return (
-                      <div className="bracket-game" key={yindex}>
-                      <div className="player bot" style={{
-                        backgroundColor: colors[winners[xindex][yindex]]
-                      }} onClick={() => handleClick(xindex, yindex)}>
-                          {y}
-                          <div className="score">
-                            0
-                          </div>
+                  return (
+                    <div className="bracket-game" key={yindex}>
+                    <div className="player bot" style={{
+                      backgroundColor: colors[winners[xindex][yindex]]
+                    }} onClick={() => handleClick(xindex, yindex)}>
+                        {y}
+                        <div className="score">
+                          0
                         </div>
-                        <p></p>
                       </div>
-                    )
-                  } else {
-                    return (
-                      <div className="bracket-game" key={yindex}>
-                      <div className="player bot" style={{
-                        backgroundColor: colors[winners[xindex][yindex]]
-                      }} onClick={() => handleClick(xindex, yindex)}>
-                          {y}
-                          <div className="score">
-                            0
-                          </div>
-                        </div>
-                        <p></p>
-                      </div>
-                    )
-                  }
+                      <p></p>
+                    </div>
+                  )
                 }
               })}
             </Col>
