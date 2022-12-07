@@ -95,12 +95,10 @@ export const FirebaseProvider = (props) => {
     <FirebaseContext.Provider
       value={{
         addTournament,
-
         addTeam,
         addUser,
         addRound,
         addMatch,
-        addUser,
       }}
     >
       {props.children}
