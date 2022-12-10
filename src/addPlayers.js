@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import React, { useState, setState, useEffect } from "react";
+import { useLocation, useNavigate,  } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Container from 'react-bootstrap/Container';
@@ -12,6 +12,7 @@ import { doc, collection, getDocs, onSnapshot, query, where } from "firebase/fir
 function Player() {
   const firebase = useFirebase();
   const navigate = useNavigate();
+  const[email, setEmail] = useState("")
   const { state } = useLocation();
   const { id } = state;
   const { numTeams } = state;
@@ -21,6 +22,10 @@ function Player() {
   var teamRows = []
   var allTeams = []
   var newNumTeams = 2;
+
+  useEffect(() => {
+    setEmail(localStorage.getItem('userEmail'));
+  });
 
   while (newNumTeams < numTeams) {
     newNumTeams = newNumTeams*2;
@@ -42,20 +47,24 @@ function Player() {
 
     for(var i=0; i<numTeams; i++) {
       await firebase.addTeam(p.target[i].value, id)
+      await firebase.addTeamUser(email, p.target[i].value, id)
       allTeams.push(p.target[i].value)
     }
     console.log(allTeams)
     randomizer(allTeams);
     console.log(allTeams)
     for (var i=0; i < numRounds; i++) {
-      await firebase.addRound(id, i+1).then(docRef => {
+      await firebase.addRound(id, i+1).then  ( docRef => {
         roundId = docRef.id;
+        // firebase.addRoundUser(email, id, i+1)
       })
       for (var j = 0; j < newNumTeams/(2**i); j+=2) {
         if (i == 0) {
           await firebase.addMatch(id, roundId, allTeams[j], allTeams[j+1], 0, 0, j+1)
+          // await firebase.addMatchUser(email, id, roundId, allTeams[j], allTeams[j+1], 0, 0, j+1)
         } else {
           await firebase.addMatch(id, roundId, "?", "?", 0, 0, j+1)
+          // await firebase.addMatchUser(email, id, roundId, "?", "?", 0, 0, j+1)
         }
       }
     }
