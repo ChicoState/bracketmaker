@@ -90,7 +90,79 @@ export const FirebaseProvider = (props) => {
       matchNumber,
     });
   };
+  const addMatchUser = async (Email, tournament, round, first, second, firstState, secondState, matchNumber) => {
 
+    return await addDoc(collection(firestore, "User", Email, "Tournaments", tournament, "Rounds", round, "Matches"), {
+      first,
+      second,
+      firstState,
+      secondState,
+      matchNumber,
+    });
+  };
+  const addTournamentUser = async (Email, name, type, manager, numTeams) => {
+    return await setDoc(doc(firestore,"User", Email, "Tournaments", name), {
+      name,
+      type,
+      manager,
+      numTeams,
+    });
+  };
+
+
+  const addTeamUser = async (Email, name, tournament) => {
+    return await addDoc(collection(firestore, "User", Email, "Tournaments", tournament, "Teams"), {
+      name,
+    });
+  };
+  // const addTeam = async (name, tournament) => {
+  //   return await addDoc(collection(firestore, "Tournaments", tournament, "Teams"), {
+  //     name,
+  //   });
+  // };
+  const addRoundUser = async (Email, tournament, roundNumber) => {
+    return await addDoc(collection(firestore, "User", Email, "Tournaments", tournament, "Rounds"), {
+      roundNumber,
+    });
+  };
+  // const addRound = async (tournament, roundNumber) => {
+  //   return await addDoc(collection(firestore, "Tournaments", tournament, "Rounds"), {
+  //     roundNumber,
+  //   });
+  // };
+
+  const signUp = async(email, password) => {
+    try{
+      const userCredentails = await createUserWithEmailAndPassword(fireauth, email, password);
+      const user = userCredentails.user;
+      return true;
+    }
+    catch(error){
+      return {error: error.message}
+    }
+  };
+
+  const logIn = async(email,password) => {
+    try{
+      const userCredentails = await signInWithEmailAndPassword(fireauth, email, password);
+      const user = userCredentails.user;
+      return true;
+    }
+    catch(error){
+      return {error: error.message}
+    }
+  };
+
+  const logOut = async() =>{
+    try{
+      await signOut(fireauth)
+      return true;
+    }
+    catch (error){
+      return false
+    }
+    };
+  
   return (
     <FirebaseContext.Provider
       value={{
@@ -99,6 +171,14 @@ export const FirebaseProvider = (props) => {
         addUser,
         addRound,
         addMatch,
+        addUser,
+        signUp,
+        logIn,
+        logOut,
+        addRoundUser,
+        addTeamUser,
+        addTournamentUser,
+        addMatchUser,
       }}
     >
       {props.children}
