@@ -1,17 +1,14 @@
-.h1{
-    text-align: center;
-}
 
-.HomeStyle{
-    background-color: cornflowerblue;
-    background-size: "cover";
-    height: 110vh;
-    margin-top: -70px;
-    background-repeat: no-repeat;
+h1{
+    text-align: center;
+    height: 10px;
+    color: white;
+    font-size: 60px;
+    padding-top: 80px;
 }
 
 .mid-button-style {
-    height: 750px;
+    height: 550px;
     display: flex;
     align-items: center;
     justify-content: center;

@@ -7,6 +7,7 @@ import Match from "./match"
 import "./view.css"
 import { useFirebase, firestore } from "./firebase";
 import { collection, doc, setDoc, getDocs, onSnapshot, query, where } from "firebase/firestore";
+import image from './backgroundpattern.png';
 
 function View() {
   const [teamList, setTeamList] = useState([])
@@ -252,6 +253,15 @@ function View() {
 
 console.log("Probobaly rendering")
   return (
+    <div style= {{
+     // color: "white",
+      backgroundImage: `url(${image})`,
+      backgroundSize: "cover",
+      height: "110vh",
+      width: "195vh",
+      marginTop: "-50px",
+      backgroundRepeat: "no-repeat",}}>
+        <h1 style={{paddingBottom:"120px", color:"white"}}> Tournament</h1>
     <Row className="d-flex align-items-center">
       {rounds.map(function (x, xindex) {
         if (xindex+1 == Math.log2(newNumTeams)+1) {
@@ -260,7 +270,9 @@ console.log("Probobaly rendering")
               {x.map(function (y, yindex) {
                 return (
                   <div className="bracket-game" key={yindex}>
-                    <div className="player top">
+                    <div className="player top" style={{
+                        backgroundColor: colors[winners[xindex][yindex]]
+                      }}>
                       {y} wins!
                     </div>
                   </div>
@@ -367,6 +379,7 @@ console.log("Probobaly rendering")
         }
       })}
     </Row>
+    </div>
   )
 }
 
