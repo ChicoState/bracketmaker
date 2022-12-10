@@ -1,19 +1,22 @@
 import { doc, deleteDoc, collection, } from "firebase/firestore";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import { firestore, fireauth } from "./firebase";
+import { firestore, fireauth, } from "./firebase";
 import { useFirebase} from "../src/firebase";
 import FormCheck from 'react-bootstrap/FormCheck';
-import { createUserWithEmailAndPassword} from 'firebase/auth';
+import { createUserWithEmailAndPassword, getAuth} from 'firebase/auth';
+import { useNavigate, Link } from "react-router-dom";
+import { Alert } from "bootstrap";
+import {UserAuth} from "./AuthContext";
 // import { fireauth } from "./firebase.jsx";
 // import { fireauth } from "./firebase";
 
 
-const SignUp = () => {
+const SigningUp = () => {
 
     const firebase = useFirebase();
 
@@ -25,9 +28,12 @@ const SignUp = () => {
     const [isViewer, setViewer] = useState("true");
     const [isPlayer, setPlayer] = useState("false");
     const [isManager, setManager] = useState("false");
-
+    const [error, setError] = useState("");
+    const navigate = useNavigate();
+    const [items, setItems] = useState([]);
+    const auth = getAuth();
     const playerCollectionRef = collection(firestore, "User");
-
+    // const { createUser } = UserAuth(createUser);
     const handleSubmit = async (e) => {
         //// dddddddddddddddddddddddddddd
         // e.preventDefault();
@@ -47,15 +53,33 @@ const SignUp = () => {
     const handleNoti = async (e) => {
         setNoti(!isNoti);
     };
-    const signUp = async () =>{
-        createUserWithEmailAndPassword(fireauth, email, pass)
-            .then(fireauth=>console.log(fireauth))
-                .catch(error=>console.error(error))
-                // e.preventDefault();
+    const sign = async (e) =>{
+        e.preventDefault();
+        try{
+            const sig = await firebase.signUp(email, pass);
+            if(sig.error){
+                console.log(sig.error);
+                setError(sig.error);
+            }else{
                 await firebase.addUser(name, uname, email, pass);
-                window.location.reload(false);
-    }    
-
+                navigate('/Profile/', { state: {}});
+                
+                    localStorage.setItem('userEmail', email);
+                 
+            }
+        }catch(e){
+            setError(e.message)
+            console.log(e.message)
+        }
+        // const sig = await createUser(email, pass);
+        // if(sig.error){
+        //     setError(sig.error)
+        // }else{
+        //     await firebase.addUser(name, uname, email, pass);
+        //     navigate('/Profile/', { state: {}})
+        // }
+        
+    };
     return (
         // <div className="container mt-5">
         //   This will be the SignUp page.
@@ -126,6 +150,7 @@ const SignUp = () => {
         </Form> */}
 
         <div className="div" align="center">
+            {/* {error && <Alert variant="danger">{error}</Alert>} */}
             <label className="Form">User Name: &nbsp;</label>
             <input onChange={(e)=>setUname(e.target.value)} className="input" type="text" name="Uname" />
             <p>            </p>
@@ -139,9 +164,9 @@ const SignUp = () => {
 
             <label className="Form">Password: &nbsp;&nbsp;</label>
             <input onChange={(e)=>setPass(e.target.value)} className="input" type="password" name="email" />            <p>            </p>
-            <button className="submit" onClick={signUp}>SignUp</button>
+            <button className="submit" onClick={sign}>SignUp</button>
             <p>            </p>
-            <h6> Alreagy a User <a href="/login">Login In</a></h6>
+            <h6> Alreagy a User <Link to="/login">Login In</Link></h6>
         </div>
 
           <p></p>
@@ -149,4 +174,4 @@ const SignUp = () => {
     );
 }
 
-export default SignUp;
+export default SigningUp;

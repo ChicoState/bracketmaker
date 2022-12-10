@@ -76,7 +76,10 @@ import Navbar from 'react-bootstrap/Navbar';
 import { firestore, fireauth } from "./firebase";
 import { useFirebase } from "../src/firebase";
 import FormCheck from 'react-bootstrap/FormCheck'
-import {signInWithEmailAndPassword} from 'firebase/auth';
+import {signInWithEmailAndPassword, getAuth, setPersistence, browserLocalPersistence} from 'firebase/auth';
+import { useNavigate, Link } from "react-router-dom";
+import { Alert } from "bootstrap";
+
 
 // import auth from firebaseauth
 
@@ -85,22 +88,26 @@ const Login = () => {
     const firebase = useFirebase();
     const [email, setEmail] = useState("");
     const [pass, setPass] = useState("");
-
+    const navigate = useNavigate();
     const playerCollectionRef = collection(firestore, "User");
-
+    const auth = getAuth();
+    const [error, setError] = useState("");
     const handleSubmit = async (e) => {
         e.preventDefault();
         await firebase.addUser(name, email, pass, isNoti, isViewer, isPlayer, isManager);
         window.location.reload(false);
         // navigate('/create-tournament/', { state: {}})
     };  
-    
-    const log = () =>{
-        signInWithEmailAndPassword(fireauth, email, pass)
-            .then(fireauth=>console.log(fireauth))
-                .catch(error=>console.error(error))
-    } 
-
+    const log =async (e) =>{
+        e.preventDefault();
+        const logging = await firebase.logIn(email, pass);
+        if(logging.error){
+            setError(logging.error)
+        }else{
+            localStorage.setItem('userEmail', email);
+            navigate('/Profile/', { state: {}})
+        }
+    }
     return (
         // <div className="container mt-5">
         //   This will be the SignUp page.
@@ -154,7 +161,7 @@ const Login = () => {
             <button className="submit" onClick={log}>Login</button>
             </Container>
             <p>            </p>
-            <h6> Already a User <a href="/signup">Sign Up</a></h6>
+            <h6> Already a User <Link to="/signup">Sign Up</Link></h6>
         </div>
       </div>
     );
