@@ -3,7 +3,6 @@ import { useLocation } from "react-router-dom";
 import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
 import CardGroup from "react-bootstrap/CardGroup";
-import Match from "./match"
 import "./view.css"
 import { useFirebase, firestore } from "./firebase";
 import { collection, doc, setDoc, getDocs, onSnapshot, query, where } from "firebase/firestore";
