@@ -179,7 +179,6 @@ export const FirebaseProvider = (props) => {
         addTeamUser,
         addTournamentUser,
         addMatchUser,
-
       }}
     >
       {props.children}

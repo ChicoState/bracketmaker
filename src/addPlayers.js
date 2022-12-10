@@ -8,6 +8,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import { firestore } from "./firebase";
 import { useFirebase } from "../src/firebase";
 import { doc, collection, getDocs, onSnapshot, query, where } from "firebase/firestore";
+import image from './backgroundpattern.png';
 
 function Player() {
   const firebase = useFirebase();
@@ -93,13 +94,23 @@ function Player() {
   };
 
   return (
-    <div>
+    <div style={{
+      backgroundImage: `url(${image})`,
+      backgroundSize: "cover",
+      height: "110vh",
+      marginTop: "-50px",
+      backgroundRepeat: "no-repeat",
+      color: "white",
+    }}>
+      <h1 style={{color:"white", paddingBottom: "100px",}}>
+        Enter Team Names
+      </h1>
       <Form onSubmit={handleSubmit}>
         <div>
           {teamRows.map(function (x) {
             return (
               <div key={x}>
-                Team/Player Name:
+                Team Name:
                 <Form.Group className="mb-3" controlId="formBasicText">
                   <Form.Control
                     name="team"

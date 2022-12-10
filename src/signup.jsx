@@ -14,6 +14,7 @@ import { Alert } from "bootstrap";
 import {UserAuth} from "./AuthContext";
 // import { fireauth } from "./firebase.jsx";
 // import { fireauth } from "./firebase";
+import image from './backgroundpattern.png';
 
 
 const SigningUp = () => {
@@ -84,10 +85,17 @@ const SigningUp = () => {
         // <div className="container mt-5">
         //   This will be the SignUp page.
         // </div>
+        <div style={{
+            backgroundImage: `url(${image})`,
+            backgroundSize: "cover",
+            height: "110vh",
+            marginTop: "-50px",
+            backgroundRepeat: "no-repeat",
+          }}>
         <div className="container mt-5">
         
         <Container>
-            <h1 align="center">SignUp</h1>
+            <h1 align="center" style={{paddingBottom:"100px"}}>SignUp</h1>
         </Container>
         <p>  </p>
         <p></p>
@@ -152,24 +160,26 @@ const SigningUp = () => {
         <div className="div" align="center">
             {/* {error && <Alert variant="danger">{error}</Alert>} */}
             <label className="Form">User Name: &nbsp;</label>
+            <label className="Form" style={{color:"white"}}>User Name: &nbsp;</label>
             <input onChange={(e)=>setUname(e.target.value)} className="input" type="text" name="Uname" />
             <p>            </p>
-            <label className="Form">Full Name: &nbsp;</label>
+            <label className="Form" style={{color:"white"}}>Full Name: &nbsp;</label>
             <input onChange={(e)=>setName(e.target.value)} className="input" type="text" name="name" />
             <p>            </p>
 
-            <label className="Form">Email: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </label>
+            <label className="Form" style={{color:"white"}}>Email: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </label>
             <input onChange={(e)=>setEmail(e.target.value)} className="input" type="email" name="email" />
             <p>            </p>
 
-            <label className="Form">Password: &nbsp;&nbsp;</label>
+            <label className="Form" style={{color:"white"}}>Password: &nbsp;&nbsp;</label>
             <input onChange={(e)=>setPass(e.target.value)} className="input" type="password" name="email" />            <p>            </p>
             <button className="submit" onClick={sign}>SignUp</button>
             <p>            </p>
-            <h6> Alreagy a User <Link to="/login">Login In</Link></h6>
+            <h6 style={{color:"white"}}> Alreagy a User <a href="/login">Login In</a></h6>
         </div>
 
           <p></p>
+      </div>
       </div>
     );
 }
