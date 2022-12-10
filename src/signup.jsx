@@ -11,7 +11,6 @@ import FormCheck from 'react-bootstrap/FormCheck';
 import { createUserWithEmailAndPassword, getAuth} from 'firebase/auth';
 import { useNavigate, Link } from "react-router-dom";
 import { Alert } from "bootstrap";
-import {UserAuth} from "./AuthContext";
 // import { fireauth } from "./firebase.jsx";
 // import { fireauth } from "./firebase";
 import image from './backgroundpattern.png';
