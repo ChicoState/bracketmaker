@@ -6,7 +6,6 @@ import Button from "react-bootstrap/Button";
 import { firestore } from "./firebase";
 import MyNav from "./components/Navbar"
 import Player from "./addPlayers"
-import Match from "./match";
 import NewTournament from "./newTournament";
 import View from "./view";
 import Home from "./home"
