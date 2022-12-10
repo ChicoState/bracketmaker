@@ -8,7 +8,6 @@ import {useState} from 'react';
 import { useEffect } from 'react';
 import { getDoc } from "firebase/firestore";
 import { Component } from 'react';
-import {Paper} from "material";
 
 const auth = getAuth();
 const Profile = () => {
