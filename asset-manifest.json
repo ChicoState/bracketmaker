@@ -1,15 +1,17 @@
 {
   "files": {
-    "main.css": "/bracketmaker/static/css/main.d2d10aa0.css",
-    "main.js": "/bracketmaker/static/js/main.0a3523d8.js",
+    "main.css": "/bracketmaker/static/css/main.8fefc436.css",
+    "main.js": "/bracketmaker/static/js/main.1731e420.js",
     "static/js/787.464c6209.chunk.js": "/bracketmaker/static/js/787.464c6209.chunk.js",
+    "static/media/backgroundpattern.png": "/bracketmaker/static/media/backgroundpattern.3e0330bd5117749dcc94.png",
+    "static/media/coolbackground.png": "/bracketmaker/static/media/coolbackground.d045f1ec869e9a5b2c43.png",
     "index.html": "/bracketmaker/index.html",
-    "main.d2d10aa0.css.map": "/bracketmaker/static/css/main.d2d10aa0.css.map",
-    "main.0a3523d8.js.map": "/bracketmaker/static/js/main.0a3523d8.js.map",
+    "main.8fefc436.css.map": "/bracketmaker/static/css/main.8fefc436.css.map",
+    "main.1731e420.js.map": "/bracketmaker/static/js/main.1731e420.js.map",
     "787.464c6209.chunk.js.map": "/bracketmaker/static/js/787.464c6209.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.d2d10aa0.css",
-    "static/js/main.0a3523d8.js"
+    "static/css/main.8fefc436.css",
+    "static/js/main.1731e420.js"
   ]
 }
