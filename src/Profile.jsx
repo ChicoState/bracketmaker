@@ -84,7 +84,7 @@ const Profile = () => {
       {
          
         info2.map((event) => (
-          <td>
+          <td key="unique">
           <Card style={{ width: '12rem'}}>
           <Card.Title>{event.name}</Card.Title>
           <Card.Body>
