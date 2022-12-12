@@ -1,9 +1,7 @@
 import React from 'react'
 import image from ".//coolbackground.png"
 import "./Home.css";
-import Nav from 'react-bootstrap/Nav';
-import { Link, resolvePath, Route } from 'react-router-dom';
-import Container from 'react-bootstrap/esm/Container';
+import { Link, Route } from 'react-router-dom';
 
 const Home = () => {
   return (
