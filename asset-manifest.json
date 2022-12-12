@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "/bracketmaker/static/css/main.8fefc436.css",
-    "main.js": "/bracketmaker/static/js/main.7a7ebf8f.js",
+    "main.js": "/bracketmaker/static/js/main.b8bc2bac.js",
     "static/js/787.464c6209.chunk.js": "/bracketmaker/static/js/787.464c6209.chunk.js",
     "static/media/backgroundpattern.png": "/bracketmaker/static/media/backgroundpattern.3e0330bd5117749dcc94.png",
     "static/media/coolbackground.png": "/bracketmaker/static/media/coolbackground.d045f1ec869e9a5b2c43.png",
     "index.html": "/bracketmaker/index.html",
     "main.8fefc436.css.map": "/bracketmaker/static/css/main.8fefc436.css.map",
-    "main.7a7ebf8f.js.map": "/bracketmaker/static/js/main.7a7ebf8f.js.map",
+    "main.b8bc2bac.js.map": "/bracketmaker/static/js/main.b8bc2bac.js.map",
     "787.464c6209.chunk.js.map": "/bracketmaker/static/js/787.464c6209.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.8fefc436.css",
-    "static/js/main.7a7ebf8f.js"
+    "static/js/main.b8bc2bac.js"
   ]
 }
