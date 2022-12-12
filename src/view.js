@@ -4,7 +4,7 @@ import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
 import CardGroup from "react-bootstrap/CardGroup";
 import "./view.css"
-import { useFirebase, firestore } from "./firebase";
+import { firestore } from "./firebase";
 import { collection, doc, setDoc, getDocs, onSnapshot, query, where } from "firebase/firestore";
 import image from './backgroundpattern.png';
 
@@ -79,8 +79,8 @@ function View() {
         currentTeams[x+1][Math.floor(y/2)] = currentTeams[x][y]
         winnersArray[x][y] = 1
         winnersArray[x][y+1] = 2
-        var roundQuery = query(collection(firestore, "Tournaments", id, "Rounds"), where("roundNumber", "==", x+1))
-        var roundRef = await getDocs(roundQuery)
+        let roundQuery = query(collection(firestore, "Tournaments", id, "Rounds"), where("roundNumber", "==", x+1))
+        let roundRef = await getDocs(roundQuery)
         roundRef.forEach(async (docu) => {
           const matchQuery = query(collection(firestore, "Tournaments", id, "Rounds", docu.id, "Matches"), where("matchNumber", "==", Math.ceil((y+1)/2)))
           let matchesCollectionRef = await getDocs(matchQuery);
@@ -125,8 +125,8 @@ function View() {
         currentTeams[x+1][Math.floor(y/2)] = '?'
         winnersArray[x][y] = 0
         winnersArray[x][y+1] = 0
-        var roundQuery = query(collection(firestore, "Tournaments", id, "Rounds"), where("roundNumber", "==", x+1))
-        var roundRef = await getDocs(roundQuery)
+        let roundQuery = query(collection(firestore, "Tournaments", id, "Rounds"), where("roundNumber", "==", x+1))
+        let roundRef = await getDocs(roundQuery)
         roundRef.forEach(async (docu) => {
           const matchQuery = query(collection(firestore, "Tournaments", id, "Rounds", docu.id, "Matches"), where("matchNumber", "==", Math.ceil((y+1)/2)))
           let matchesCollectionRef = await getDocs(matchQuery);
@@ -162,8 +162,8 @@ function View() {
         currentTeams[x+1][Math.floor(y/2)] = currentTeams[x][y]
         winnersArray[x][y] = 1
         winnersArray[x][y-1] = 2
-        var roundQuery = query(collection(firestore, "Tournaments", id, "Rounds"), where("roundNumber", "==", x+1))
-        var roundRef = await getDocs(roundQuery)
+        let roundQuery = query(collection(firestore, "Tournaments", id, "Rounds"), where("roundNumber", "==", x+1))
+        let roundRef = await getDocs(roundQuery)
         roundRef.forEach(async (docu) => {
           const matchQuery = query(collection(firestore, "Tournaments", id, "Rounds", docu.id, "Matches"), where("matchNumber", "==", Math.ceil((y+1)/2)))
           let matchesCollectionRef = await getDocs(matchQuery);
@@ -208,8 +208,8 @@ function View() {
         currentTeams[x+1][Math.floor(y/2)] = '?'
         winnersArray[x][y] = 0
         winnersArray[x][y-1] = 0
-        var roundQuery = query(collection(firestore, "Tournaments", id, "Rounds"), where("roundNumber", "==", x+1))
-        var roundRef = await getDocs(roundQuery)
+        let roundQuery = query(collection(firestore, "Tournaments", id, "Rounds"), where("roundNumber", "==", x+1))
+        let roundRef = await getDocs(roundQuery)
         roundRef.forEach(async (docu) => {
           const matchQuery = query(collection(firestore, "Tournaments", id, "Rounds", docu.id, "Matches"), where("matchNumber", "==", Math.ceil((y+1)/2)))
           let matchesCollectionRef = await getDocs(matchQuery);
