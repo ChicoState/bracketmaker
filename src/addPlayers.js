@@ -1,13 +1,8 @@
-import React, { useState, setState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate,  } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
-import { firestore } from "./firebase";
 import { useFirebase } from "../src/firebase";
-import { doc, collection, getDocs, onSnapshot, query, where } from "firebase/firestore";
 import image from './backgroundpattern.png';
 
 function Player() {
@@ -18,8 +13,6 @@ function Player() {
   const { id } = state;
   const { numTeams } = state;
   var roundId
-  var matchID
-  var teamID
   var teamRows = []
   var allTeams = []
   var newNumTeams = 2;
