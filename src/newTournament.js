@@ -1,23 +1,19 @@
 // import { doc, deleteDoc, collection, } from "firebase/firestore";
-import React, { useState, useEffect, setState } from "react";
+import React, { useState, useEffect } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Container from 'react-bootstrap/Container';
-import { GoogleAuthProvider, getAuth, onAuthStateChanged } from 'firebase/auth';
-
-import Nav from 'react-bootstrap/Nav';
+import { getAuth } from 'firebase/auth';
 import Navbar from 'react-bootstrap/Navbar';
 import { useNavigate } from "react-router-dom";
-import { firestore } from "./firebase";
 import { useFirebase } from "../src/firebase";
-import { doc, getDoc } from "firebase/firestore";
+import { doc } from "firebase/firestore";
 //import "./newTournament.css";
 import image from "./backgroundpattern.png"
 
 const auth = getAuth();
 
 const NewTournament = props => {
-  const user = auth.currentUser;
   const firebase = useFirebase();
   const navigate = useNavigate();
   const [name, setName] = useState("");
