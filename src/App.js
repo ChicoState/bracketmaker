@@ -1,9 +1,6 @@
-import { collection, getDocs } from "firebase/firestore";
-import  React, { useEffect, useState } from "react";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import  React from "react";
+import { Routes, Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Button from "react-bootstrap/Button";
-import { firestore } from "./firebase";
 import MyNav from "./components/Navbar"
 import Player from "./addPlayers"
 import NewTournament from "./newTournament";
@@ -11,7 +8,6 @@ import View from "./view";
 import Home from "./home"
 import Login from "./login"
 import SignUp from "./signup"
-
 import Profile from "./Profile"
 
 
