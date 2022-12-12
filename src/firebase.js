@@ -168,7 +168,6 @@ export const FirebaseProvider = (props) => {
       value={{
         addTournament,
         addTeam,
-        addUser,
         addRound,
         addMatch,
         addUser,
